@@ -1,0 +1,35 @@
+no 1.
+crontab -e 0 7-19 * * 1,2,3,4,5 curl -s http://www.elevenia.co.id/prd-apple-iphone-7-plus-black-128gb-garansi-6242166 | grep -Po '(?<=price notranslate">).*(0)' > data.txt
+
+harga= grep -Po 'Rp \K\w+' data.txt
+echo $harga
+
+if [ $harga < 15 ]; then
+	mail -s "under 15m" "example@gmail.com" <<EOF
+	price < 15m
+	EOF
+fi
+
+no 2.
+wget -O http://stats.labs.apnic.net/ipv6/ID filename.csv
+
+no 3.
+pdflatex filename
+
+no 4.
+awk '
+{ 
+    for (i=1; i<=NF; i++)  {
+        a[NR,i] = $i
+    }
+}
+NF>p { p = NF }
+END {    
+    for(j=1; j<=p; j++) {
+        str=a[1,j]
+        for(i=2; i<=NR; i++){
+            str=str" "a[i,j];
+        }
+        print str
+    }
+}' filename
