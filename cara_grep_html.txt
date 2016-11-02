@@ -1,0 +1,6 @@
+#wget link namafile
+#grep -Po '(?<=kata-kata).*(?=kata-kata)' namafile
+
+wget http://www.elevenia.co.id/prd-apple-iphone-7-plus-black-128gb-garansi-6242166 -O iphone.html
+
+grep -Po '(?<=price notranslate">).*(?=</span>)' iphone.html
