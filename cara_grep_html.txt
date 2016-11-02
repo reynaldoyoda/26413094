@@ -1,5 +1,12 @@
-wget http://www.elevenia.co.id/prd-apple-iphone-7-plus-black-128gb-garansi-6242166 -O iphone.html
-grep -Po '(?<=price notranslate">).*(?=</span>)' iphone.html > data.txt
+#wget http://www.elevenia.co.id/prd-apple-iphone-7-plus-black-128gb-garansi-6242166 -O iphone.html
+#grep -Po '(?<=price notranslate">).*(?=</span>)' iphone.html > data.txt
 
-harga= grep -Po 'Rp \K\w+' data.txt
-echo $harga
+harga=$(grep -Po 'Rp \K\w+' data.txt)
+test=11
+
+if [ $((harga)) -lt 15 ]
+then
+mail -s "test" "m26413094@john.petra.ac.id" <<EOF
+price < 15
+EOF
+fi
