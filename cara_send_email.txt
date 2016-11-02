@@ -1,0 +1,9 @@
+#"sup" -> subject
+#"m264~" -> email yg dituju
+#hello -> isi
+#work sudah di test
+
+mail -s "sup" "m26413094@john.petra.ac.id" <<EOF
+hello
+EOF
+
